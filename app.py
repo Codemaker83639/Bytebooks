@@ -31,5 +31,13 @@ def Admin_Libros():
 
 
 
+@app.route('/Libros')
+def Libros():
+    return render_template('Bytebooks/Libros.html')
+
+@app.route('/Nosotros')
+def Nosotros():
+    return render_template('Bytebooks/Nosotros.html')
+
 if __name__ =='__main__':
     app.run(debug=True)
