@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, request, redirect
 
 app=Flask (__name__) 
 
@@ -27,17 +27,17 @@ def Admin_Login():
 def Admin_Libros():
     return render_template('Admin/Libros.html')
 
+@app.route('/Admin/Libros/guardar', methods=['POST']) 
+def Admin_Libros_guardar():
+    _nombre=request.form['txtNombre']
+    _url=request.form['txtUrl']
+    _archivo=request.files['txtImagen']   
 
+    print (_nombre)
+    print (_url)
+    print (_archivo)
 
-
-
-@app.route('/Libros')
-def Libros():
-    return render_template('Bytebooks/Libros.html')
-
-@app.route('/Nosotros')
-def Nosotros():
-    return render_template('Bytebooks/Nosotros.html')
+    return redirect('/Admin/Libros')
 
 if __name__ =='__main__':
     app.run(debug=True)
