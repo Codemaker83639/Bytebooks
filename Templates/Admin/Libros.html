@@ -7,29 +7,29 @@
                 <div class="card-header">Datos del Libro</div>
                 <div class="card-body">
 
-                    <form action="" method="post"></form>
+                    <form action="/Admin/Libros/guardar" method="post" enctype="multipart/form-data">
 
-                    <div class="mb-3">
-                        <label for="txtNombre" class="form-label">Nombre:</label>
-                        <input type="text" class="form-control" name="txtNombre" id="txtNombre"
-                            aria-describedby="helpId" placeholder="Escriba el nombre del libro">
-                    </div>
+                        <div class="mb-3">
+                            <label for="txtNombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" name="txtNombre" id="txtNombre"
+                                aria-describedby="helpId" placeholder="Escriba el nombre del libro">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="txtImagen" class="form-label">Imagen:</label>
-                        <input type="text" class="form-control" name="txtImagen" id="txtImagen"
-                            aria-describedby="helpId" placeholder="Seleccione la imagen">
-                    </div>
+                        <div class="mb-3">
+                            <label for="txtImagen" class="form-label">Imagen:</label>
+                            <input type="file" class="form-control" name="txtImagen" id="txtImagen"
+                                aria-describedby="helpId" placeholder="Seleccione la imagen">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="txtUrl" class="form-label">Url Descarga:</label>
-                        <input type="text" class="form-control" name="txtUrl" id="txtUrl" aria-describedby="helpId"
-                            placeholder="Escriba la url de descarga">
-                    </div>
+                        <div class="mb-3">
+                            <label for="txtUrl" class="form-label">Url Descarga:</label>
+                            <input type="text" class="form-control" name="txtUrl" id="txtUrl" aria-describedby="helpId"
+                                placeholder="Escriba la url de descarga">
+                        </div>
 
-                    <button type="submit" class="btn btn-primary">
-                        Agregar
-                    </button>
+                        <button type="submit" class="btn btn-primary">
+                            Agregar
+                        </button>
 
                 </div>
                 <div class="card-footer text-muted"></div>
@@ -37,6 +37,29 @@
 
         </div>
         <div class="col-md-7">
+
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Url</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td>1</td>
+                            <td>Python</td>
+                            <td>Imagen.jpg</td>
+                            <td>http://python.org</td>
+                            <td>Eliminar</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
