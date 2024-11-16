@@ -26,6 +26,11 @@
                             <input type="text" class="form-control" name="txtUrl" id="txtUrl" aria-describedby="helpId"
                                 placeholder="Escriba la url de descarga">
                         </div>
+                        <div class="mb-3">
+                            <label for="txtCategoria" class="form-label">Categoría:</label>
+                            <input type="text" class="form-control" name="txtCategoria" id="txtCategoria"
+                                aria-describedby="helpId" placeholder="Escriba la Categoría del libro">
+                        </div>
 
                         <button type="submit" class="btn btn-primary">
                             Agregar
@@ -44,19 +49,31 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">Categoría</th>
                             <th scope="col">Imagen</th>
                             <th scope="col">Url</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="">
-                            <td>1</td>
-                            <td>Python</td>
-                            <td>Imagen.jpg</td>
-                            <td>http://python.org</td>
-                            <td>Eliminar</td>
+                        {% for libro in Libros %}
+                        <tr>
+                            <td>{{ libro[0] }}</td>
+                            <td>{{ libro[1] }}</td>
+                            <td>{{ libro[2] }}</td>
+                            <td>{{ libro[3] }}</td>
+                            <td>{{ libro[4] }}</td>
+                            <td>
+
+                                <form action="/Admin/Libros/borrar" method="post"></form>
+                                <input value="{{ libro[0] }}" type="text" name="txtID" id="txtID">
+                                <button type="submit" class="btn btn-danger">
+                                    Eliminar
+                                </button>
+
+                            </td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
