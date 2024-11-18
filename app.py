@@ -14,7 +14,7 @@ mysql = MySQL(app)
 
 @app.route('/')
 def inicio():
-    return render_template('Bytebooks/Index.html')
+    return render_template('Bytebooks/index.html')
 
 @app.route('/Libros')
 def Libros():
