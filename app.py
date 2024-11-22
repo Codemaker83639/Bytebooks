@@ -1,7 +1,18 @@
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
+from flask import Flask, send_from_directory
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder='Images')
+
+@app.route('/Templates/Books/<path:filename>')
+def download_file(filename):
+    return send_from_directory('Templates/Books', filename)
+
+# Ruta para servir imágenes desde Templates/Images
+@app.route('/Templates/Images/<path:filename>')
+def serve_images(filename):
+    return send_from_directory('Templates/Images', filename)
+
 
 # Configuración de conexión a MySQL
 app.config['MYSQL_HOST'] = 'localhost'
@@ -63,6 +74,7 @@ def Admin_Libros_guardar():
     cur.close()
 
     return redirect('/Admin/Libros')
+
 
 @app.route('/Admin/Libros/borrar', methods=['POST'])
 def Admin_Libros_borrar():
