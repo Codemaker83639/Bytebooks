@@ -1,79 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bytebooks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Fondo para todo el body */
+        body {
+            height: 100%;
+            margin: 0;
+            background-image: url('/Templates/Images/Fondo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* Configuración de contenido */
+        .content {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Aseguramos que el pie esté siempre en el fondo */
+        footer {
+            background-color: #004173;
+            color: white;
+            padding: 10px 0; /* Reducido el padding */
+            text-align: center;
+            font-size: 0.9rem; /* Reducido el tamaño del texto */
+            margin-top: auto; /* Esto empuja el pie hacia el fondo */
+        }
+
+        /* Estilo para las tarjetas de los libros */
+        .card-img-top {
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #004173;
+            border-color: #004173;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #005a99;
+            border-color: #005a99;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+
+        /* Fondo de la tabla */
+        .table-container {
+            margin-top: 30px;
+            background-color: #f5f5dc; /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Estilo para el fondo blanco con la línea negra */
+        .p-5.bg-light {
+            background-color: #f8f9fa; /* Fondo blanco */
+            border: 2px solid black; /* Línea negra alrededor */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+
+        .table td {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+
+
+
 {% include 'Bytebooks/Cabecera.html' %}
+<body>
+    <div class="content">
+       
+
+        <div class="container my-4 table-container">
+            <h2 class="text-center mb-4">Sección de Libros</h2>
+            <div class="table-responsive">
 
 
-<div class="container my-4">
-    <h2 class="text-center">Sección de Libros</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th class="text-center">Libro 1</th>
-                <th class="text-center">Libro 2</th>
-                <th class="text-center">Libro 3</th>
-                <th class="text-center">Libro 4</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <div class="card">
-                        <img class="card-img-top" src="/Templates/Images/Python.jpg" alt="Python" />
-                        <div class="card-body">
-                            <h4 class="card-title">Python</h4>
-                            <p class="card-text">
-                                <a class="btn btn-primary" href="/Templates/Books/Python%20para%20todos.pdf"
-                                    download="Python_para_todos.pdf" role="button">
-                                    Descargar
-                                </a>
 
-                            </p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                        <img class="card-img-top" src="/Templates/Images/Javascript.jpg" alt="Javascript" />
-                        <div class="card-body">
-                            <h4 class="card-title">Javascript</h4>
-                            <p class="card-text">
-                                <a class="btn btn-primary" href="/Templates/Books/Javascript.pdf"
-                                    download="Python_para_todos.pdf" role="button">
-                                    Descargar
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                        <img class="card-img-top" src="/Templates/Images/Rust.jpg" alt="Rust" />
-                        <div class="card-body">
-                            <h4 class="card-title">Rust</h4>
-                            <p class="card-text">
-                                <a class="btn btn-primary" href="/Templates/Books/rust-es.pdf"
-                                    download="Python_para_todos.pdf" role="button">
-                                    Descargar
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                        <img class="card-img-top" src="/Templates/Images/Go.jpg" alt="Goolang" />
-                        <div class="card-body">
-                            <h4 class="card-title">Goolang</h4>
-                            <p class="card-text">
-                                <a class="btn btn-primary" href="/Templates/Books/go.pdf"
-                                    download="Python_para_todos.pdf" role="button">
-                                    Descargar
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Libro 1</th>
+                            <th class="text-center">Libro 2</th>
+                            <th class="text-center">Libro 3</th>
+                            <th class="text-center">Libro 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="card">
+                                    <img class="card-img-top" src="/Templates/Images/Python.jpg" alt="Python" />
+                                    <div class="card-body">
+                                        <h4 class="card-title">Python</h4>
+                                        <p class="card-text">
+                                            <a class="btn btn-primary" href="/Templates/Books/Python%20para%20todos.pdf"
+                                                download="Python_para_todos.pdf" role="button">Descargar</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="card">
+                                    <img class="card-img-top" src="/Templates/Images/Javascript.jpg" alt="Javascript" />
+                                    <div class="card-body">
+                                        <h4 class="card-title">Javascript</h4>
+                                        <p class="card-text">
+                                            <a class="btn btn-primary" href="/Templates/Books/Javascript.pdf"
+                                                download="Javascript.pdf" role="button">Descargar</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="card">
+                                    <img class="card-img-top" src="/Templates/Images/Rust.jpg" alt="Rust" />
+                                    <div class="card-body">
+                                        <h4 class="card-title">Rust</h4>
+                                        <p class="card-text">
+                                            <a class="btn btn-primary" href="/Templates/Books/rust-es.pdf"
+                                                download="rust-es.pdf" role="button">Descargar</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="card">
+                                    <img class="card-img-top" src="/Templates/Images/Go.jpg" alt="Go" />
+                                    <div class="card-body">
+                                        <h4 class="card-title">Go</h4>
+                                        <p class="card-text">
+                                            <a class="btn btn-primary" href="/Templates/Books/go.pdf"
+                                                download="go.pdf" role="button">Descargar</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+
+      
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 {% include 'Bytebooks/Pie.html' %}
+</html>

@@ -1,59 +1,144 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login del administrador</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Fondo para todo el body */
+        body {
+            height: 100%;
+            margin: 0;
+            background-image: url('/Templates/Images/Fondo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
 
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+        /* Configuración de contenido */
+        .content {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Aseguramos que el pie esté siempre en el fondo */
+        footer {
+            background-color: #004173;
+            color: white;
+            padding: 10px 0; /* Reducido el padding */
+            text-align: center;
+            font-size: 0.9rem; /* Reducido el tamaño del texto */
+            margin-top: auto; /* Esto empuja el pie hacia el fondo */
+        }
+
+        /* Estilo para las tarjetas de los libros */
+        .card-img-top {
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #004173;
+            border-color: #004173;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #005a99;
+            border-color: #005a99;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+
+        /* Fondo de la tabla */
+        .table-container {
+            margin-top: 30px;
+            background-color: #f5f5dc; /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Estilo para el fondo blanco con la línea negra */
+        .p-5.bg-light {
+            background-color: #f8f9fa; /* Fondo blanco */
+            border: 2px solid black; /* Línea negra alrededor */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+
+        .table td {
+            padding: 10px;
+        }
+    </style>
 </head>
-
+{% include 'Bytebooks/Cabecera.html' %}
 <body>
 
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> 
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-
-            </div>
-            <div class="col-md-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
                 <br>
                 <div class="card">
-                    <div class="card-header">Inicio de sesion</div>
+                    <div class="card-header text-center bg-primary text-white">Inicio de sesión</div>
                     <div class="card-body">
-
-                        <form action="/Admin/Login" method="post"></form>
-
-                        <div class="mb-3">
-                            <label for="txtUsuario" class="form-label">Usuario:</label>
-                            <input type="text" class="form-control" name="txtUsuario" id="txtUsuario"
-                                aria-describedby="helpId" placeholder="Ingrese su Usuario">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="txtPassword" class="form-label">Contraseña:</label>
-                            <input type="text" class="form-control" name="txtPassword" id="txtPassword"
-                                aria-describedby="helpId" placeholder="Ingrese su Contraseña">
-                        </div>
-
-                        <button type="submit" class="btn btn-success">
-                            Entrar
-                        </button>
-
-
-
+    
+                        <form action="/Admin/Login" method="post">
+                            <div class="mb-3">
+                                <label for="txtUsuario" class="form-label text-start">Usuario:</label>
+                                <input type="text" class="form-control" name="txtUsuario" id="txtUsuario" placeholder="Ingrese su Usuario" required>
+                            </div>
+                        
+                            <div class="mb-3">
+                                <label for="txtPassword" class="form-label text-start">Contraseña:</label>
+                                <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Ingrese su Contraseña" required>
+                            </div>
+                        
+                            <button type="submit" class="btn btn-success w-100">
+                                Entrar
+                            </button>
+                        </form>
+                        
+                        </form>
                     </div>
-                    <div class="card-footer text-muted"></div>
+                    <div class="card-footer text-center text-muted">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
                 </div>
-
+    
             </div>
-            <div class="col-md-4">
-
-            </div>
+        </div>
+    </div>
+    
+    
+            <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br> 
+                    <br>
+                    <br>
+                    <br>
+ 
         </div>
     </div>
 
@@ -67,5 +152,5 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
 </body>
-
+{% include 'Bytebooks/Pie.html' %}
 </html>
