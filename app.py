@@ -1,7 +1,18 @@
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
+from flask import Flask, send_from_directory
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder='Images')
+
+@app.route('/Templates/Books/<path:filename>')
+def download_file(filename):
+    return send_from_directory('Templates/Books', filename)
+
+# Ruta para servir imágenes desde Templates/Images
+@app.route('/Templates/Images/<path:filename>')
+def serve_images(filename):
+    return send_from_directory('Templates/Images', filename)
+
 
 # Configuración de conexión a MySQL
 app.config['MYSQL_HOST'] = 'localhost'
@@ -64,23 +75,29 @@ def Admin_Libros_guardar():
 
     return redirect('/Admin/Libros')
 
+
 @app.route('/Admin/Libros/borrar', methods=['POST'])
 def Admin_Libros_borrar():
-    _id = request.form['txtId']
-    print(_id)
+    _id = request.form.get('txtID')  # ID recibido del formulario
+    print(f"ID recibido para eliminar: {_id}")  # Para depuración
 
-    conexion=mysql.connect()
-    cursor= conexion.cursor()
-    cursor.execute("SELECT * FROM `libros`  WHERE id=%s",(_id))
-    libro=cursor.fetchall()
-    conexion.commit()
-    print(libro)
-
-    conexion=mysql.connect()
-    cursor= conexion.cursor()
-    cursor.execute("DELETE FROM libros WHERE id=%s",(_id))
-    conexion.commit()
-
+    if _id:
+        cur = mysql.connection.cursor()
+        try:
+            # Cambia 'id' por 'id_libro' en las consultas
+            cur.execute("SELECT * FROM `libros` WHERE id_libro=%s", (_id,))
+            libro = cur.fetchone()
+            if libro:
+                # Si el libro existe, elimínalo
+                cur.execute("DELETE FROM `libros` WHERE id_libro=%s", (_id,))
+                mysql.connection.commit()
+                print(f"Libro eliminado: {libro}")
+            else:
+                print("El libro no existe o ya fue eliminado.")
+        except Exception as e:
+            print(f"Error al eliminar el libro: {e}")
+        finally:
+            cur.close()
     return redirect('/Admin/Libros')
 
 if __name__ == '__main__':
