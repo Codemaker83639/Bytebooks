@@ -159,13 +159,10 @@
                                                 <td>{{ libro[3] }}</td>
                                                 <td>{{ libro[4] }}</td>
                                                 <td>
-
-                                                    <form action="/Admin/Libros/borrar" method="post"></form>
-                                                    <input value="{{ libro[0] }}" type="text" name="txtID" id="txtID">
-                                                    <button type="submit" class="btn btn-danger">
-                                                        Eliminar
-                                                    </button>
-
+                                                    <form action="/Admin/Libros/borrar" method="post">
+                                                        <input type="hidden" name="txtID" value="{{ libro[0] }}">
+                                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                             {% endfor %}
