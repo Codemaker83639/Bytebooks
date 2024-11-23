@@ -1,13 +1,14 @@
-<nav style="background-color: #004173; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
+
+<nav style="background-color: #004173; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; width: 100%; box-sizing: border-box; margin: 0;">
     <!-- Logo de la empresa -->
     <div>
         <a href="/">
-            <img src="/static/images/logo.png" alt="Logo Bytebooks" style="height: 50px; width: auto;">
+            <img src="/Templates/Images/Logo0.jpg" alt="Logo Bytebooks" style="height: 50px; width: auto;">
         </a>
     </div>
 
     <!-- Menú de navegación -->
-    <ul style="list-style: none; display: flex; margin: 0; padding: 0; justify-content: flex-end; flex-grow: 1;">
+    <ul style="list-style: none; display: flex; margin: 0; padding: 0; justify-content: flex-start; flex-grow: 1;">
         <li style="margin: 0 15px;">
             <a href="/" style="text-decoration: none; color: white; font-weight: bold; padding: 5px 10px; transition: background-color 0.3s;">Inicio</a>
         </li>
@@ -32,5 +33,16 @@
         background-color: #005a99; /* Un azul más claro */
         border-radius: 5px; /* Bordes redondeados para el efecto */
     }
-</style>
 
+    /* Asegurar que no haya márgenes en el body y html */
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Elimina márgenes en el contenedor */
+    nav {
+        margin: 0;
+        padding: 0;
+    }
+</style>

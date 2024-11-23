@@ -7,13 +7,18 @@
     <title>Bytebooks</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Aseguramos que el body y html ocupen toda la altura de la pantalla */
-        html, body {
+        /* Fondo para todo el body */
+        body {
             height: 100%;
             margin: 0;
+            background-image: url('/Templates/Images/Fondo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
         }
 
-        /* Usamos flexbox para que el contenido se expanda y empuje el pie al final */
+        /* Configuración de contenido */
         .content {
             min-height: 100%;
             display: flex;
@@ -29,39 +34,93 @@
             font-size: 0.9rem; /* Reducido el tamaño del texto */
             margin-top: auto; /* Esto empuja el pie hacia el fondo */
         }
+
+        /* Estilo para las tarjetas de los libros */
+        .card-img-top {
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #004173;
+            border-color: #004173;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #005a99;
+            border-color: #005a99;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+
+        /* Fondo de la tabla */
+        .table-container {
+            margin-top: 30px;
+            background-color: #f5f5dc; /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Estilo para el fondo blanco con la línea negra */
+        .p-5.bg-light {
+            background-color: #f8f9fa; /* Fondo blanco */
+            border: 2px solid black; /* Línea negra alrededor */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+
+        .table td {
+            padding: 10px;
+        }
     </style>
 </head>
-
+{% include 'Bytebooks/Cabecera.html' %}
 <body>
+
+    
+
     <div class="content">
-        <!-- Aquí va tu contenido principal -->
-        {% include 'Bytebooks/Cabecera.html' %}
+        <div class="container my-4 table-container">
+            <h2 class="text-center mb-4"></h2>
 
-        <div class="p-5 bg-light">
-            <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <h1 class="display-3">Bienvenid@ a Bytebooks</h1>
-                <p class="lead">La plataforma ideal para descargar guías de programación.</p>
-                <hr class="my-2">
-                <p>Explora nuestra biblioteca de recursos gratuitos.</p>
-                <p class="lead">
-                    <a class="btn btn-success btn-lg" href="/Libros" role="button" style="border-radius: 0; padding: 10px 20px; font-size: 18px;">Ver Guías</a>
-                </p>
+            <div class="table-responsive">
+                <!-- Aquí va tu contenido principal -->
+                <div class="p-5 bg-light">
+                    <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                        <h1 class="display-3">Bienvenid@ a Bytebooks</h1>
+                        <p class="lead">La plataforma ideal para descargar guías de programación.</p>
+                        <hr class="my-2">
+                        <p>Explora nuestra biblioteca de recursos gratuitos.</p>
+                        <p class="lead">
+                            <a class="btn btn-success btn-lg" href="/Libros" role="button" style="border-radius: 0; padding: 10px 20px; font-size: 18px;">Ver Guías</a>
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Pie de página -->
-        <footer>
-            <p>&copy; 2024 Bytebooks. Todos los derechos reservados.</p>
-        </footer>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+        </div>
+        
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    
 </body>
-
+{% include 'Bytebooks/Pie.html' %}
 </html>
-
