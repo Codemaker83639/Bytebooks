@@ -19,33 +19,37 @@
             background-position: center;
         }
 
-        /* Configuración de contenido */
-        .content {
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
+        /* Contenedor general con fondo beige */
+        .table-container {
+            margin: 30px auto; /* Centra el contenedor horizontalmente */
+            background-color: #f5f5dc; /* Fondo beige */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px; /* Reduce el ancho máximo */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+            border: 2px solid black; /* Línea negra alrededor */
         }
 
-        /* Aseguramos que el pie esté siempre en el fondo */
+        /* Fondo del formulario con borde negro */
+        .p-5.bg-light {
+            background-color: #f8f9fa; /* Fondo blanco */
+            border: 2px solid black; /* Línea negra alrededor */
+            border-radius: 10px; /* Bordes redondeados */
+            max-width: 500px; /* Limitar el ancho */
+            margin: 20px auto; /* Centrar y agregar espacio */
+            padding: 30px; /* Ajustar el espacio interno */
+        }
+
+        /* Pie de página */
         footer {
             background-color: #004173;
             color: white;
-            padding: 10px 0; /* Reducido el padding */
+            padding: 10px 0;
             text-align: center;
-            font-size: 0.9rem; /* Reducido el tamaño del texto */
-            margin-top: auto; /* Esto empuja el pie hacia el fondo */
+            font-size: 0.9rem;
         }
 
-        /* Estilo para las tarjetas de los libros */
-        .card-img-top {
-            max-height: 200px;
-            object-fit: cover;
-        }
-
-        .card-body {
-            text-align: center;
-        }
-
+        /* Botón principal */
         .btn-primary {
             background-color: #004173;
             border-color: #004173;
@@ -56,102 +60,54 @@
             background-color: #005a99;
             border-color: #005a99;
         }
-
-        .table th,
-        .table td {
-            vertical-align: middle;
-        }
-
-        /* Fondo de la tabla */
-        .table-container {
-            margin-top: 30px;
-            background-color: #f5f5dc; /* Fondo semitransparente */
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        /* Estilo para el fondo blanco con la línea negra */
-        .p-5.bg-light {
-            background-color: #f8f9fa; /* Fondo blanco */
-            border: 2px solid black; /* Línea negra alrededor */
-            border-radius: 10px; /* Bordes redondeados */
-        }
-
-        .table td {
-            padding: 10px;
-        }
     </style>
 </head>
-{% include 'Bytebooks/Cabecera.html' %}
-<body>
 
+{% include 'Bytebooks/Cabecera.html' %}
+
+<body>
     <br>
     <br>
     <br>
     <br>
-    <br> 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <br>
-                <div class="card">
-                    <div class="card-header text-center bg-primary text-white">Inicio de sesión</div>
-                    <div class="card-body">
-    
-                        <form action="/Admin/Login" method="post">
-                            <div class="mb-3">
-                                <label for="txtUsuario" class="form-label text-start">Usuario:</label>
-                                <input type="text" class="form-control" name="txtUsuario" id="txtUsuario" placeholder="Ingrese su Usuario" required>
-                            </div>
-                        
-                            <div class="mb-3">
-                                <label for="txtPassword" class="form-label text-start">Contraseña:</label>
-                                <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Ingrese su Contraseña" required>
-                            </div>
-                        
-                            <button type="submit" class="btn btn-success w-100">
-                                Entrar
-                            </button>
-                        </form>
-                        
-                        </form>
-                    </div>
-                    <div class="card-footer text-center text-muted">
-                        <a href="#">¿Olvidaste tu contraseña?</a>
-                    </div>
+
+    <div class="container table-container">
+        <div class="p-5 bg-light">
+            <div class="card">
+                <div class="card-header text-center bg-primary text-white">Inicio de sesión</div>
+                <div class="card-body">
+                    <form action="/Admin/Login" method="post">
+                        <div class="mb-3">
+                            <label for="txtUsuario" class="form-label text-start">Usuario:</label>
+                            <input type="text" class="form-control" name="txtUsuario" id="txtUsuario" placeholder="Ingrese su Usuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtPassword" class="form-label text-start">Contraseña:</label>
+                            <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Ingrese su Contraseña" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Entrar</button>
+                    </form>
                 </div>
-    
+                <div class="card-footer text-center text-muted">
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                </div>
             </div>
         </div>
     </div>
-    
-    
-            <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br> 
-                    <br>
-                    <br>
-                    <br>
- 
-        </div>
-    </div>
 
+    <br>
+    <br>
+    <br>
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
 </body>
+
 {% include 'Bytebooks/Pie.html' %}
+
 </html>
