@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
 from flask import Flask, send_from_directory
+from datetime import datetime
 
 app = Flask(__name__,static_folder='Images')
 
@@ -61,6 +62,13 @@ def Admin_Libros_guardar():
     _url = request.form['txtUrl']
     _archivo = request.files['txtImagen']
     _categoria = request.form['txtCategoria']
+
+    tiempo=datetime.now()
+    horaActual=tiempo.strftime('%Y%H%M%S')
+
+    if _archivo.filename!="":
+        nuevoNombre=horaActual+_archivo.filename
+        _archivo.save("Templates/Images/"+nuevoNombre)
    
     print(_nombre)
     print(_url)
@@ -69,7 +77,7 @@ def Admin_Libros_guardar():
 
     # Guardar datos en la base de datos
     cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO libros (nombre_libro, url, imagen, categoria) VALUES (%s, %s, %s, %s)", (_nombre, _url, _archivo.filename,  _categoria))
+    cur.execute("INSERT INTO libros (nombre_libro, url, imagen, categoria) VALUES (%s, %s, %s, %s)", (_nombre, _url, nuevoNombre,  _categoria))
     mysql.connection.commit()
     cur.close()
 
