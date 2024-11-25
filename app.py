@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from flask_mysqldb import MySQL
 from flask import Flask, send_from_directory
 from datetime import datetime
 
+
+
 app = Flask(__name__,static_folder='Images')
+app.secret_key="fibonacci"
 
 @app.route('/Templates/Books/<path:filename>')
 def download_file(filename):
@@ -40,9 +43,35 @@ def Nosotros():
 def Admin_Index():
     return render_template('Admin/Index.html')
 
+
+
 @app.route('/Login')
-def Admin_Login():
+def admin_login():
     return render_template('Admin/Login.html')
+
+@app.route('/Admin/Login', methods=['POST'])
+def admin_login_post():
+    _usuario=request.form['txtUsuario']
+    _password=request.form['txtPassword']
+    print(_usuario)
+    print(_password)
+
+
+    if (_usuario=="Fran" and _password=="123") or (_usuario=="Albert" and _password=="123") :
+
+        session["login"]=True
+        session["usuario"]="Administrador"
+        return redirect("/Admin")
+
+    return render_template("Admin/Login.html")
+
+
+
+
+
+
+
+
 
 @app.route('/Admin/Libros')
 def Admin_Libros():
