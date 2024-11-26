@@ -1,12 +1,9 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, send_from_directory
 from flask_mysqldb import MySQL
-from flask import Flask, send_from_directory
 from datetime import datetime
 
-
-
-app = Flask(__name__,static_folder='Images')
-app.secret_key="fibonacci"
+app = Flask(__name__, static_folder='Images')
+app.secret_key = "fibonacci"
 
 @app.route('/Templates/Books/<path:filename>')
 def download_file(filename):
@@ -16,7 +13,6 @@ def download_file(filename):
 @app.route('/Templates/Images/<path:filename>')
 def serve_images(filename):
     return send_from_directory('Templates/Images', filename)
-
 
 # Configuración de conexión a MySQL
 app.config['MYSQL_HOST'] = 'localhost'
@@ -43,47 +39,39 @@ def Nosotros():
 def Admin_Index():
     return render_template('Admin/Index.html')
 
-
-
 @app.route('/Login')
 def admin_login():
     return render_template('Admin/Login.html')
 
+@app.route('/Registro')
+def admin_registro():
+    return render_template('Admin/Registro.html')
+
 @app.route('/Admin/Login', methods=['POST'])
 def admin_login_post():
-    _usuario=request.form['txtUsuario']
-    _password=request.form['txtPassword']
+    _usuario = request.form['txtUsuario']
+    _password = request.form['txtPassword']
     print(_usuario)
     print(_password)
 
-
-    if (_usuario=="Fran" and _password=="123") or (_usuario=="Albert" and _password=="123") :
-
-        session["login"]=True
-        session["usuario"]="Administrador"
+    # Verificar usuario y contraseña
+    if (_usuario == "Fran" and _password == "123") or (_usuario == "Albert" and _password == "123"):
+        session["login"] = True
+        session["usuario"] = "Administrador"
         return redirect("/Admin")
-
-    return render_template("Admin/Login.html")
-
-
-
-
-
-
-
-
+    
+    # Si no coincide, vuelve al login con mensaje de error
+    return render_template("Admin/Login.html", error="Usuario o contraseña incorrectos.")
 
 @app.route('/Admin/Libros')
 def Admin_Libros():
-
     # Ejemplo de consulta para verificar la conexión
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM `libros`")
     libros = cur.fetchall()
-    print(f"MySQL version: {libros[0]}")
+    print(f"Libros disponibles: {libros}")
     cur.close()
     return render_template("Admin/Libros.html", Libros=libros)
-
 
 @app.route('/Admin/Libros/guardar', methods=['POST'])
 def Admin_Libros_guardar():
@@ -92,13 +80,13 @@ def Admin_Libros_guardar():
     _archivo = request.files['txtImagen']
     _categoria = request.form['txtCategoria']
 
-    tiempo=datetime.now()
-    horaActual=tiempo.strftime('%Y%H%M%S')
+    tiempo = datetime.now()
+    horaActual = tiempo.strftime('%Y%H%M%S')
 
-    if _archivo.filename!="":
-        nuevoNombre=horaActual+_archivo.filename
-        _archivo.save("Templates/Images/"+nuevoNombre)
-   
+    if _archivo.filename != "":
+        nuevoNombre = horaActual + _archivo.filename
+        _archivo.save("Templates/Images/" + nuevoNombre)
+
     print(_nombre)
     print(_url)
     print(_archivo)
@@ -106,12 +94,12 @@ def Admin_Libros_guardar():
 
     # Guardar datos en la base de datos
     cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO libros (nombre_libro, url, imagen, categoria) VALUES (%s, %s, %s, %s)", (_nombre, _url, nuevoNombre,  _categoria))
+    cur.execute("INSERT INTO libros (nombre_libro, url, imagen, categoria) VALUES (%s, %s, %s, %s)", 
+                (_nombre, _url, nuevoNombre, _categoria))
     mysql.connection.commit()
     cur.close()
 
     return redirect('/Admin/Libros')
-
 
 @app.route('/Admin/Libros/borrar', methods=['POST'])
 def Admin_Libros_borrar():
