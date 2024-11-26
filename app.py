@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, session, send_from_directory
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
 from datetime import datetime
 
@@ -43,25 +44,77 @@ def Admin_Index():
 def admin_login():
     return render_template('Admin/Login.html')
 
+
+
+
 @app.route('/Registro')
 def admin_registro():
     return render_template('Admin/Registro.html')
+
+##Captura de los datos de usuario en registro:
+
+@app.route('/Admin/Registro', methods=['POST'])
+def admin_registro01():
+    # Obtener los datos del formulario
+    _usuario = request.form['txtUsuario']
+    _correo = request.form['txtCorreo']
+    _password = request.form['txtPassword']
+
+    # Validar que los campos no estén vacíos
+    if not _usuario or not _correo or not _password:
+        return render_template("Admin/Registro.html", error="Todos los campos son obligatorios.")
+    
+    # Hashear la contraseña antes de guardarla
+    hashed_password = generate_password_hash(_password)
+
+    try:
+        # Insertar datos en la base de datos
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO usuario (nombre_usuario, correo, contrasena) VALUES (%s, %s, %s)",
+                    (_usuario, _correo, hashed_password))
+        mysql.connection.commit()
+        cur.close()
+        return redirect('/Login')  # Redirigir al inicio de sesión tras el registro
+    except Exception as e:
+        return render_template("Admin/Registro.html", error=f"Error al registrar usuario: {e}")
+
 
 @app.route('/Admin/Login', methods=['POST'])
 def admin_login_post():
     _usuario = request.form['txtUsuario']
     _password = request.form['txtPassword']
-    print(_usuario)
-    print(_password)
 
-    # Verificar usuario y contraseña
-    if (_usuario == "Fran" and _password == "123") or (_usuario == "Albert" and _password == "123"):
-        session["login"] = True
-        session["usuario"] = "Administrador"
-        return redirect("/Admin")
-    
-    # Si no coincide, vuelve al login con mensaje de error
-    return render_template("Admin/Login.html", error="Usuario o contraseña incorrectos.")
+    print(f"Datos recibidos - Usuario: {_usuario}, Contraseña: {_password}")
+
+    # Verificar en la base de datos primero
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM usuario WHERE nombre_usuario = %s", [_usuario])
+        user = cur.fetchone()
+        cur.close()
+
+        # Si el usuario existe en la base de datos
+        if user and check_password_hash(user[3], _password):  # user[3] es el hash de la contraseña
+            session["login"] = True
+            session["usuario"] = user[1]  # Guardar el nombre de usuario
+            print("Inicio de sesión exitoso (base de datos)")
+            return redirect("/")
+        
+        # Verificar usuarios predefinidos para el área administrativa
+        elif (_usuario == "Fran" and _password == "123") or (_usuario == "Albert" and _password == "123"):
+            session["login"] = True
+            session["usuario"] = "Administrador"
+            print("Inicio de sesión exitoso (administrador)")
+            return redirect("/Admin")
+        
+        # Si ninguna de las opciones coincide
+        else:
+            print("Usuario o contraseña incorrectos")
+            return render_template("Admin/Login.html", error="Usuario o contraseña incorrectos.")
+    except Exception as e:
+        print(f"Error al iniciar sesión: {e}")
+        return render_template("Admin/Login.html", error=f"Error al iniciar sesión: {e}")
+
 
 @app.route('/Admin/Libros')
 def Admin_Libros():
