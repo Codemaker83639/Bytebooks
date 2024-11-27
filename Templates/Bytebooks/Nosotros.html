@@ -30,10 +30,10 @@
         footer {
             background-color: #004173;
             color: white;
-            padding: 10px 0; /* Reducido el padding */
+            padding: 10px 0;
             text-align: center;
-            font-size: 0.9rem; /* Reducido el tamaño del texto */
-            margin-top: auto; /* Esto empuja el pie hacia el fondo */
+            font-size: 0.9rem;
+            margin-top: auto;
         }
 
         /* Estilo para las tarjetas de los libros */
@@ -65,65 +65,124 @@
         /* Fondo de la tabla */
         .table-container {
             margin-top: 30px;
-            background-color: #f5f5dc; /* Fondo semitransparente */
+            background-color: #f5f5dc;
             padding: 20px;
             border-radius: 10px;
         }
 
         /* Estilo para el fondo blanco con la línea negra */
         .p-5.bg-light {
-            background-color: #f8f9fa; /* Fondo blanco */
-            border: 2px solid black; /* Línea negra alrededor */
-            border-radius: 10px; /* Bordes redondeados */
+            background-color: #f8f9fa;
+            border: 2px solid black;
+            border-radius: 10px;
         }
 
         .table td {
             padding: 10px;
         }
+
+        /* Estilo para la sección "Sobre Nosotros" */
+        .sobre-nosotros {
+            text-align: center;
+            font-family: 'Georgia', serif;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .sobre-nosotros h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #004173;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .sobre-nosotros p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        /* Estilos para las preguntas */
+        .sobre-nosotros .pregunta {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #005a99;
+            margin: 15px 0;
+        }
+
+        /* Estilos para la galería */
+        .gallery {
+            display: flex;
+            width: 1000px;
+            height: 430px;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .gallery img {
+            flex-grow: 1;
+            width: 0;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: 0.5s ease;
+            border-radius: 15px;
+            /* Bordes redondeados */
+        }
+
+        .gallery img:hover {
+            cursor: crosshair;
+            width: 300px;
+            opacity: 1;
+            filter: contrast(120%);
+        }
     </style>
 </head>
 {% include 'Bytebooks/Cabecera.html' %}
+
 <body>
-
-    
-
     <div class="content">
         <div class="container my-4 table-container">
             <h2 class="text-center mb-4"></h2>
 
             <div class="table-responsive">
-                <!-- Aquí va tu contenido principal -->
                 <div class="p-5 bg-light">
-                    <h2 class="display-3">Sobre Nosotros.</h2>
 
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                    <!-- Galería de imágenes -->
+                    <section class="gallery">
+                        <img src="Templates/Images/Sobrenos01.jpg" alt="Imagen 1">
+                        <img src="Templates/Images/Sobrenos02.jpg" alt="Imagen 2">
+                        <img src="Templates/Images/Sobrenos03.jpg" alt="Imagen 3">
+                        <img src="Templates/Images/Sobrenos04.jpg" alt="Imagen 4">
+                        <img src="Templates/Images/Sobrenos05.jpg" alt="Imagen 5">
+                        <img src="Templates/Images/Sobrenos06.jpg" alt="Imagen 6">
+                        <img src="Templates/Images/Sobrenos07.jpg" alt="Imagen 7">
+                        <img src="Templates/Images/Sobrenos08.jpg" alt="Imagen 8">
+                        <img src="Templates/Images/Sobrenos09.jpg" alt="Imagen 9">
+                        <img src="Templates/Images/Sobrenos10.jpg" alt="Imagen 10">
+                    </section>
+                    <!-- Fin de la galería -->
+                    <div class="sobre-nosotros">
+                        <h2>Sobre Nosotros</h2>
+                        <p class="pregunta">¿Qué somos?</p>
+                        <p>Somos ¡Bytebooks! una comunidad apasionada por la lectura, dedicada a conectar a las personas
+                            con libros
+                            que inspiran, educan y entretienen.</p>
+                        <p class="pregunta">¿Qué ofrecemos?</p>
+                        <p>Ofrecemos una plataforma accesible y amigable para explorar, compartir y descubrir libros,
+                            con recursos gratuitos diseñados para satisfacer a lectores de todos los niveles.</p>
+                        <p class="pregunta">¿Qué finalidad tiene este proyecto?</p>
+                        <p>Buscamos fomentar la lectura y construir una comunidad unida por el amor a los libros,
+                            promoviendo el conocimiento y el crecimiento personal.</p>
+                    </div>
+
+
 
 
                 </div>
             </div>
         </div>
     </div>
-
-    
 </body>
 {% include 'Bytebooks/Pie.html' %}
+
 </html>
