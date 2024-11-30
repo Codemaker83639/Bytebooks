@@ -1,0 +1,127 @@
+/* Fondo para todo el body */
+body {
+    height: 100%;
+    margin: 0;
+    background-image: url('/Templates/Images/Fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/* Configuración de contenido */
+.content {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Aseguramos que el pie esté siempre en el fondo */
+footer {
+    background-color: #004173;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+/* Estilo para las tarjetas de los libros */
+.card-img-top {
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #004173;
+    border-color: #004173;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #005a99;
+    border-color: #005a99;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+/* Fondo de la tabla */
+.table-container {
+    margin-top: 30px;
+    background-color: #f5f5dc;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Estilo para el fondo blanco con la línea negra */
+.p-5.bg-light {
+    background-color: #f8f9fa;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.table td {
+    padding: 10px;
+}
+
+/* Estilo para la sección "Sobre Nosotros" */
+.sobre-nosotros {
+    text-align: center;
+    font-family: 'Georgia', serif;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.sobre-nosotros h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #004173;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.sobre-nosotros p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+/* Estilos para las preguntas */
+.sobre-nosotros .pregunta {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #005a99;
+    margin: 15px 0;
+}
+
+/* Estilos para la galería */
+.gallery {
+    display: flex;
+    width: 1000px;
+    height: 430px;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.gallery img {
+    flex-grow: 1;
+    width: 0;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.5s ease;
+    border-radius: 15px;
+    /* Bordes redondeados */
+}
+
+.gallery img:hover {
+    cursor: crosshair;
+    width: 300px;
+    opacity: 1;
+    filter: contrast(120%);
+}
