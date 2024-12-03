@@ -28,30 +28,56 @@ mysql = MySQL(app)
 def inicio():
     return render_template('Bytebooks/index.html')
 
-@app.route('/Libros')
-def Libros():
-    return render_template('Bytebooks/Libros.html')
-
 @app.route('/Nosotros')
 def Nosotros():
     return render_template('Bytebooks/Nosotros.html')
 
-@app.route('/Admin/')
-def Admin_Index():
-    return render_template('Admin/Index.html')
+@app.route('/Ranking')
+def Ranking():
+    return render_template('Bytebooks/Ranking.html')
+
 
 @app.route('/Login')
 def Bytebooks_login():
     return render_template('Bytebooks/Login.html')
 
-
 @app.route('/Registro')
 def Bytebooks_registro():
     return render_template('Bytebooks/Registro.html')
 
+
+
+
+
+@app.route('/User/Nosotros')
+def User_Nosotros():
+    return render_template('User/Nosotros.html')
+
+@app.route('/User/Ranking')
+def User_Ranking():
+    return render_template('User/Ranking.html')
+
+@app.route('/User/Libros')
+def UserLibros():
+    return render_template('User/Libros.html')
+
 @app.route('/User/')
 def User_Index():
     return render_template('User/Index.html')
+
+
+
+
+
+
+@app.route('/Admin/')
+def Admin_Index():
+    return render_template('Admin/Index.html')
+
+@app.route('/Admin/Ranking')
+def Admin_Ranking():
+    return render_template('Admin/Ranking.html')
+
 
 
 
