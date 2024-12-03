@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/Templates/Css/estilos_cabecera.css">
+
 <nav style="background-color: #004173; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; width: 100%; box-sizing: border-box; margin: 0;">
     <!-- Logo de la empresa -->
     <div>
@@ -10,21 +10,36 @@
     <!-- Menú de navegación -->
     <ul style="list-style: none; display: flex; margin: 0; padding: 0; justify-content: flex-start; flex-grow: 1;">
         <li style="margin: 0 15px;">
-            <a href="/" style="text-decoration: none; color: white; font-weight: bold; padding: 5px 10px; transition: background-color 0.3s;">Inicio</a>
+            <a href="/User/" style="text-decoration: none; color: white; font-weight: bold; padding: 5px 10px; transition: background-color 0.3s;">Inicio</a>
         </li>
         <li style="margin: 0 15px;">
-            <a href="/Libros" style="text-decoration: none; color: white; font-weight: bold; padding: 5px 10px; transition: background-color 0.3s;">Libros</a>
+            <a href="/User/Libros" style="text-decoration: none; color: white; font-weight: bold; padding: 5px 10px; transition: background-color 0.3s;">Libros</a>
         </li>
         <li style="margin: 0 15px;">
-            <a href="/Ranking" style="text-decoration: none; color: white; font-weight: bold; padding: 5px 10px; transition: background-color 0.3s;">Ranking</a>
+            <a href="/User/Ranking" style="text-decoration: none; color: white; font-weight: bold; padding: 5px 10px; transition: background-color 0.3s;">Ranking</a>
         </li>
         <li style="margin: 0 15px;">
-            <a href="/Nosotros" style="text-decoration: none; color: white; font-weight: bold; padding: 5px 10px; transition: background-color 0.3s;">Nosotros</a>
-        </li>
-        <li style="margin: 0 15px;">
-            <a href="/Login" style="text-decoration: none; color: white; font-weight: bold; padding: 5px 10px; transition: background-color 0.3s;">Login</a>
+            <a href="/User/Nosotros" style="text-decoration: none; color: white; font-weight: bold; padding: 5px 10px; transition: background-color 0.3s;">Nosotros</a>
         </li>
     </ul>
 </nav>
 
+<style>
+    /* Efecto hover para los enlaces */
+    nav ul li a:hover {
+        background-color: #005a99; /* Un azul más claro */
+        border-radius: 5px; /* Bordes redondeados para el efecto */
+    }
 
+    /* Asegurar que no haya márgenes en el body y html */
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Elimina márgenes en el contenedor */
+    nav {
+        margin: 0;
+        padding: 0;
+    }
+</style>

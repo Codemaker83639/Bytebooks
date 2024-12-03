@@ -28,32 +28,65 @@ mysql = MySQL(app)
 def inicio():
     return render_template('Bytebooks/index.html')
 
-@app.route('/Libros')
-def Libros():
-    return render_template('Bytebooks/Libros.html')
-
 @app.route('/Nosotros')
 def Nosotros():
     return render_template('Bytebooks/Nosotros.html')
+
+@app.route('/Ranking')
+def Ranking():
+    return render_template('Bytebooks/Ranking.html')
+
+
+@app.route('/Login')
+def Bytebooks_login():
+    return render_template('Bytebooks/Login.html')
+
+@app.route('/Registro')
+def Bytebooks_registro():
+    return render_template('Bytebooks/Registro.html')
+
+
+
+
+
+@app.route('/User/Nosotros')
+def User_Nosotros():
+    return render_template('User/Nosotros.html')
+
+@app.route('/User/Ranking')
+def User_Ranking():
+    return render_template('User/Ranking.html')
+
+@app.route('/User/Libros')
+def UserLibros():
+    return render_template('User/Libros.html')
+
+@app.route('/User/')
+def User_Index():
+    return render_template('User/Index.html')
+
+
+
+
+
 
 @app.route('/Admin/')
 def Admin_Index():
     return render_template('Admin/Index.html')
 
-@app.route('/Login')
-def admin_login():
-    return render_template('Admin/Login.html')
+@app.route('/Admin/Ranking')
+def Admin_Ranking():
+    return render_template('Admin/Ranking.html')
 
 
 
 
-@app.route('/Registro')
-def admin_registro():
-    return render_template('Admin/Registro.html')
+
+
 
 ##Captura de los datos de usuario en registro:
 
-@app.route('/Admin/Registro', methods=['POST'])
+@app.route('/Bytebooks/Registro', methods=['POST'])
 def admin_registro01():
     # Obtener los datos del formulario
     _usuario = request.form['txtUsuario']
@@ -62,7 +95,7 @@ def admin_registro01():
 
     # Validar que los campos no estén vacíos
     if not _usuario or not _correo or not _password:
-        return render_template("Admin/Registro.html", error="Todos los campos son obligatorios.")
+        return render_template("Bytebooks/Registro.html", error="Todos los campos son obligatorios.")
     
     # Hashear la contraseña antes de guardarla
     hashed_password = generate_password_hash(_password)
@@ -76,10 +109,10 @@ def admin_registro01():
         cur.close()
         return redirect('/Login')  # Redirigir al inicio de sesión tras el registro
     except Exception as e:
-        return render_template("Admin/Registro.html", error=f"Error al registrar usuario: {e}")
+        return render_template("Bytebooks/Registro.html", error=f"Error al registrar usuario: {e}")
 
 
-@app.route('/Admin/Login', methods=['POST'])
+@app.route('/Bytebooks/Login', methods=['POST'])
 def admin_login_post():
     _usuario = request.form['txtUsuario']
     _password = request.form['txtPassword']
@@ -110,10 +143,10 @@ def admin_login_post():
         # Si ninguna de las opciones coincide
         else:
             print("Usuario o contraseña incorrectos")
-            return render_template("Admin/Login.html", error="Usuario o contraseña incorrectos.")
+            return render_template("Bytebooks/Login.html", error="Usuario o contraseña incorrectos.")
     except Exception as e:
         print(f"Error al iniciar sesión: {e}")
-        return render_template("Admin/Login.html", error=f"Error al iniciar sesión: {e}")
+        return render_template("Bytebooks/Login.html", error=f"Error al iniciar sesión: {e}")
 
 
 @app.route('/Admin/Libros')
