@@ -60,9 +60,8 @@
 
 <body>
     {% include 'Bytebooks/Cabecera.html' %}
-    <br>
-                            <br>
-                            
+    <br><br>
+
     <div class="container table-container">
         <div class="p-5 bg-light">
             <div class="card">
@@ -75,26 +74,35 @@
                                 placeholder="Ingrese su Usuario" required>
                         </div>
                         <div class="mb-3">
-                                <label for="txtPassword" class="form-label">Contraseña:</label>
+                            <label for="txtPassword" class="form-label">Contraseña:</label>
                             <input type="password" class="form-control" name="txtPassword" id="txtPassword"
                                 placeholder="Ingrese su Contraseña" required>
                         </div>
                         <button type="submit" class="btn btn-success w-100 mb-2">Entrar</button>
-                        
                         <a href="/Registro" class="btn btn-secondary w-100">Registrarse</a>
-                          
                     </form>
-                    
+
+                    <!-- Mostrar mensaje de error si existe -->
+                    {% if error %}
+                    <div id="error-message" class="alert alert-danger mt-3" role="alert">
+                        {{ error }}
+                    </div>
+                    <script>
+                        // Ocultar el mensaje de error después de 5 segundos
+                        setTimeout(function() {
+                            var errorMsg = document.getElementById('error-message');
+                            if (errorMsg) {
+                                errorMsg.style.display = 'none';
+                            }
+                        }, 5000);
+                    </script>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
+    <br><br><br><br><br><br>
 
     {% include 'Bytebooks/Pie.html' %}
 </body>
