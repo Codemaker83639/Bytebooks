@@ -1,4 +1,4 @@
-Aquí tienes un archivo `README.md` en formato Markdown para el repositorio:
+
 
 ```markdown
 # Bytebooks 📚
@@ -103,5 +103,3 @@ Este proyecto está bajo la [Licencia MIT](LICENSE). Puedes usarlo, modificarlo 
 
 ¡Gracias por usar Bytebooks! Si tienes dudas o problemas, no dudes en abrir un issue.
 ```
-
-Este archivo incluye toda la información necesaria para usar el proyecto, las dependencias principales y recursos útiles relacionados. 😊
